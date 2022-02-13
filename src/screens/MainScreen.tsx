@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { Box, Text, Center, VStack } from 'native-base'
+import { Box, Center, VStack } from 'native-base'
 
 import TaskItem from '../components/TaskItem'
 import ThemeToggle from '../components/ThemeToggle'
@@ -16,12 +16,9 @@ const MainScreen = () => {
       _dark={{ bg: 'blueGray.900' }}
       _light={{ bg: 'blueGray.50' }}
     >
-      <VStack space={5} alignItems="center">
-        <Box w="100px" h="100px">
+      <VStack space={5} alignItems="center" w="full">
+        <Box w="full" h="100px">
           <TaskItem onToggle={handleToggle} isDone={checked} />
-        </Box>
-        <Box>
-          <Text>Hello</Text>
         </Box>
         <ThemeToggle />
       </VStack>

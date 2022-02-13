@@ -36,6 +36,7 @@ const TaskItem = ({ isDone, onToggle }: Props) => {
           />
         </Pressable>
       </Box>
+
       <TaskLabel
         strikeThrough={isDone}
         textColor={activeText}
