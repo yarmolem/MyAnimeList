@@ -10,15 +10,14 @@ const AnimatedPath = Animated.createAnimatedComponent(Path)
 
 const AnimatedStroke = ({ progress, ...pathProps }: AnimatedStrokeProps) => {
   const [length, setLength] = useState(0)
+
   const ref = useRef<typeof AnimatedPath>(null)
-  const animatedProps = useAnimatedProps(() => ({
-    strokeDashoffset: Math.max(
-      0,
-      length -
-        length * Easing.bezier(0.37, 0, 0.63, 1).factory()(progress.value) -
-        0.1
-    )
-  }))
+  const animatedProps = useAnimatedProps(
+    () => ({
+      strokeDashoffset: Math.max(0, length - length * progress.value - 0.1)
+    }),
+    [progress.value, length]
+  )
 
   return (
     <AnimatedPath

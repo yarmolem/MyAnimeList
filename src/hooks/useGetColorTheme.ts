@@ -1,5 +1,5 @@
-import { useCallback } from "react"
-import { useTheme, themeTools, useColorModeValue } from "native-base"
+import { useCallback } from 'react'
+import { useTheme, themeTools, useColorModeValue } from 'native-base'
 
 interface GetColorProps {
   dark: string
@@ -9,10 +9,13 @@ interface GetColorProps {
 const useGetColorTheme = () => {
   const theme = useTheme()
 
-  const getColor = useCallback(({ dark, light }: GetColorProps) => {
-    return themeTools.getColor(theme, useColorModeValue(light, dark))
-  }, []);
-  
+  const getColor = useCallback(
+    ({ dark, light }: GetColorProps) => {
+      return themeTools.getColor(theme, useColorModeValue(light, dark))
+    },
+    [theme]
+  )
+
   return { getColor }
 }
 
